@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CobbleGems — Legendary Info",
-  description: "Suivez les spawns légendaires sur CobbleGems.",
+  description: "-",
 };
 
 export default function RootLayout({
