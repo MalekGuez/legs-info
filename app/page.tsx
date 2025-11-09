@@ -711,8 +711,9 @@ export default function Home() {
               {refreshing ? "Actualisation..." : "Actualiser les horaires"}
             </button>
             <span className="text-xs text-zinc-500">
-              Ajustez le délai en minutes/secondes. Utilisez « Heure Minecraft »
-              pour prévoir la phase Minecraft.
+              Le temps saisi est appliqué automatiquement. L’heure Minecraft
+              ne doit être renseignée qu’en cas de changement (ex. après un
+              redémarrage).
             </span>
           </div>
         </header>
