@@ -698,7 +698,7 @@ export default function Home() {
               {refreshing ? "Actualisation..." : "Actualiser les horaires"}
             </button>
             <span className="text-xs text-zinc-500">
-              Ajustez le délai en minutes/secondes. Utilisez « Temps in-game »
+              Ajustez le délai en minutes/secondes. Utilisez « Heure Minecraft »
               pour prévoir la phase Minecraft.
             </span>
           </div>
@@ -803,8 +803,8 @@ export default function Home() {
                           className="inline-flex items-center rounded-md border border-white/15 px-3 py-1.5 text-xs font-medium text-white transition hover:border-white/40 hover:bg-white/10 cursor-pointer disabled:cursor-not-allowed"
                         >
                           {showInGameControls[resource.id]
-                            ? "Masquer temps in-game"
-                            : "Temps in-game"}
+                            ? "Masquer heure Minecraft"
+                            : "Heure Minecraft"}
                         </button>
                       ) : null}
                     </div>
