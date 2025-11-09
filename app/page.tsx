@@ -83,6 +83,7 @@ const getMinecraftPhaseFromMinutes = (
   // Thresholds (HH:MM):
   // 04:33 -> 273 min : start of dawn (aube)
   // 06:27 -> 387 min : start of day (jour)
+  // 12:00 -> 720 min : midday separator for morning/afternoon
   // 17:37 -> 1,057 min : start of dusk (crépuscule)
   // 19:48 -> 1,188 min : start of night (nuit)
   // Day wraps at 24:00 -> 1,440 min
@@ -91,8 +92,12 @@ const getMinecraftPhaseFromMinutes = (
     return { phase: "Aube", timeLabel };
   }
 
-  if (normalizedMinutes >= 387 && normalizedMinutes < 1_057) {
-    return { phase: "Jour", timeLabel };
+  if (normalizedMinutes >= 387 && normalizedMinutes < 720) {
+    return { phase: "Matin", timeLabel };
+  }
+
+  if (normalizedMinutes >= 720 && normalizedMinutes < 1_057) {
+    return { phase: "Après-midi", timeLabel };
   }
 
   if (normalizedMinutes >= 1_057 && normalizedMinutes < 1_188) {
@@ -419,11 +424,19 @@ export default function Home() {
 
     const now = new Date();
     const diffMs = date.getTime() - now.getTime();
-    const diffMinutes = Math.round(diffMs / 60000);
+    const diffSeconds = Math.floor(diffMs / 1000);
 
-    if (diffMinutes <= 0) {
-      return "À redéfinir";
+    if (diffSeconds <= 0) {
+      return diffMs > 0 ? "Dans 1 seconde" : "À redéfinir";
     }
+
+    if (diffSeconds <= 60) {
+      return diffSeconds === 1
+        ? "Dans 1 seconde"
+        : `Dans ${diffSeconds} secondes`;
+    }
+
+    const diffMinutes = Math.floor(diffSeconds / 60);
 
     if (diffMinutes <= 120) {
       return diffMinutes === 1
