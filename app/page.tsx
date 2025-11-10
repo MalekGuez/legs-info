@@ -55,7 +55,8 @@ type DerivedMinecraftData = {
 };
 
 const PHASE_ICON_MAP: Record<string, string> = {
-  Jour: "/phase-day.svg",
+  Matin: "/phase-morning.svg",
+  "Après-midi": "/phase-afternoon.svg",
   Nuit: "/phase-night.svg",
   Aube: "/phase-dawn.svg",
   Crépuscule: "/phase-dusk.svg",
